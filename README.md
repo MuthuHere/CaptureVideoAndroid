@@ -27,9 +27,11 @@ Android capturing 3 seconds of video and play in videoview
             if (resultCode === Activity.RESULT_OK && requestCode == CAMERA_CAPTURE_VIDEO_REQUEST_CODE) {
                val vid = data?.data
                videoPath = getRealPathFromURI(vid!!)
-               vv.setVideoURI(Uri.parse(videoPath))
-               vv.requestFocus()
-               vv.start()
+               vv.apply {
+                 setVideoURI(Uri.parse(videoPath))
+                 requestFocus()
+                 start()
+               }
              }
          }
 
